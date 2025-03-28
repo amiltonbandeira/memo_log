@@ -11,9 +11,9 @@ class MailMessage(models.TransientModel):
 
         if not vals('memo_id'):
             memo = self.env['memo.log'].create({
-                'name': f'Memo for message ',
+                'name': 'Memo for message ',
                 'recipient_type': 'Email',
-                'related_document': 'docu',
+                'related_document': 'document',
                 'author_id': 'author',
             })
             vals['memo_id'] = memo.id

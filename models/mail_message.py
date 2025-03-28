@@ -11,7 +11,7 @@ class MailMessage(models.Model):
         if not vals('memo_id'):
             memo = self.env['memo.log'].create({
                 'name': f'Memo for message',
-                'recipient_type': 'docu',
+                'recipient_type': 'document',
                 'related_document': 'Email',
                 'author_id': 'author',
             })
