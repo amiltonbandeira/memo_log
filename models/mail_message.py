@@ -1,24 +1,20 @@
 from odoo import models, api, fields
+from odoo.exceptions import ValidationError
 
 class MailMessage(models.Model):
-        _inherit = 'mail.message'
+    _inherit = 'mail.message'
 
-        memo_id = fields.Many2one('memo.log', string='Memo')
+    memo_id = fields.Many2one('memo.log', string='Memo')
 
-        @api.model
-        def create_memo_message(self, message_id):
-            message = self.browse(message_id)
+    @api.model
+    def create(self, vals):
+        if not vals.get('memo_id'):
+            memo = self.env['memo.log'].create({
+                'name': 'Memo from message',
+                'recipient_type': 'Memo from dd',
+                'related_document': 'Memo from message',
+                'author_id': 'Memo from message',
+            })
+            vals['memo_id'] = memo.id
 
-            memo_vals = {
-                'name': message.subject or 'Memo from message',
-                'recipient_type': message.body or '',
-                'related_document': message.model,
-                'author_id': message.author_id.id,
-            }
-
-            memo = self.env['memo.log'].create(memo_vals)
-
-            for attachment in message.attachment_ids:
-                memo.write({'message_attachment_ids': [(4, attachment.id)]})
-
-            return memo
+        return super(MailMessage, self).create(vals)
