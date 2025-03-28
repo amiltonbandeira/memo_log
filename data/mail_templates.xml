@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_memo" model="mail.template">
+            <field name="name">Email</field>
+            <field name="model_id" ref="memo.model_memo_log"/>
+            <field name="email_from">{{ object.user_id.email_formatted or object.company_id.email_formatted or user.email_formatted or 'no-reply@example.com' }}</field>
+            <field name="email_to">{{ object.address_id.email or object.company_id.email or 'admin@example.com' }}</field>
+
+            <field name="body_html" type="html">
+                    <div style="margin: 0px; padding: 0px; background-color:white; color:black">
+                         <p style="margin: 0px; padding: 0px; font-size: 12px; margin-bottom:5px">
+                             This is a mesage to send to client
+                            <br></br>
+                         </p>
+                         <p>
+                             <t t-out="object.title or ''"></t>
+                         </p>
+                    </div>
+            </field>
+        </record>
+    </data>
+</odoo>
