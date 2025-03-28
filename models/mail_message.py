@@ -8,5 +8,14 @@ class MailMessage(models.Model):
     memo_id = fields.Many2one("memo.log", 'Memo')
 
     @api.model
-    def create(self, vals):
-        pass
+    def create_memo_message(self,vals):
+        for message in self:
+            memo_vals = {
+                'name' : message.name or 'Memo from message '
+                'recipient_type' 
+                'related_document'
+                'create_uid'
+                'attachment'
+            }
+            memo = self.env['memo.log'].create(memo_vals)
+
