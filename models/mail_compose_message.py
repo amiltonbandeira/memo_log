@@ -1,20 +1,23 @@
 from odoo import models, fields, api
 
+class MailComposeMessage(models.TransientModel):
+    _inherit = 'mail.compose.message'
 
-class MailMessage(models.Model):
-    _inherit = 'mail.message'
+    memo_template_id = fields.Many2one('memo.log', string='Memo Template')
 
-    memo_id = fields.Many2one('memo.log', string='Memo')
+    def create_memo_from_template(self):
 
-    @api.model
-    def create(self, vals):
-        if not vals.get('memo_id'):
-            memo = self.env['memo.log'].create({
-                'name': 'Memo from message',
-                'recipient_type': 'Memo from dd',
-                'related_document': 'Memo from message',
+        if self.memo_template_id:
+
+            memo_vals = {
+                'name': self.memo_template_id.name,
+                'recipient_type': self.memo_template_id.recipient_type,
+                'related_document': self.memo_template_id.related_document,
                 'author_id': self.env.user.id,
-            })
-            vals['memo_id'] = memo.id
+            }
 
-        return super(MailMessage, self).create(vals)
+            memo = self.env['memo.log'].create(memo_vals)
+
+            return memo
+        else:
+            return None
