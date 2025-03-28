@@ -13,7 +13,6 @@ class MailMessage(models.Model):
             memo_vals = {
                 'name' : message.name or 'Memo from message ',
                 'recipient_type' : message.body or '',
-                'create_uid' : self.env.uid,
             }
 
             memo = self.env['memo.log'].create(memo_vals)
