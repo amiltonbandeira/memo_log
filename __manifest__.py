@@ -8,7 +8,7 @@
     'author': 'Alien Group',
     'license': 'LGPL-3',
     'website': '',
-    'depends': ['base','project','mail', ],
+    'depends': ['base','project','mail'],
     'data': [
         'security/ir.model.access.csv',
         'views/memo_views.xml',
