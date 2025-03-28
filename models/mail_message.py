@@ -17,8 +17,4 @@ class MailMessage(models.Model):
 
             memo = self.env['memo.log'].create(memo_vals)
 
-
-                for attachment in message.attachment_ids:
-                    memo.write({'attachment_ids': [(4, attachment.id)]})
-
-                return memo
+            return memo
