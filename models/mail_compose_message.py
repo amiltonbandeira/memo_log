@@ -1,12 +1,11 @@
 from odoo import models, fields
 
-class MailComposeMessage(models.Model):
+class MailComposeMessage(models.TransientModel):
     _inherit = 'mail.compose.message'
 
     memo_template_id = fields.Many2one('memo.log', string='Memo Template')
 
     def create_memo_from_template(self):
-        """ Create a memo from the selected template """
         if self.memo_template_id:
             memo_vals = {
                 'name': self.memo_template_id.name,
