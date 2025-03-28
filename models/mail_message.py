@@ -1,9 +1,9 @@
-    from odoo import models, api, fields
+from odoo import models, api, fields
 
-    class MailMessage(models.Model):
+class MailMessage(models.Model):
         _inherit = 'mail.message'
 
-        memo_id = fields.Many2one("memo.log", string='Memo')
+        memo_id = fields.Many2one('memo.log', string='Memo')
 
         @api.model
         def create_memo_message(self, message_id):

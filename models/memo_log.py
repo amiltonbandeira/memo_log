@@ -19,14 +19,5 @@ class memo_log(models.Model):
 
 
 
-    related_document = fields.Many2one('project.task', string="Related Document")  # You can adjust the model
-    attachment = fields.Boolean("Attachment")
-    patient_id = fields.Many2one("res.partner", string="Patient")
-    project_id = fields.Many2one("project.task", string="Project Id")
-    message_ids = fields.One2many('mail.message', 'res_id', domain=[('model', '=', 'memo.log')], string="Messages")
-    message_attachment_ids = fields.Many2many('ir.attachment', string="Attachments")
-    author_id = fields.Many2one("res.users", string="From", default=lambda self: self.env.user)
-    partner_ids = fields.Many2many("res.partner", "memo_log_partner", "memo_id", "partner_id", string="To (Partners)")
-    cc_partner_ids = fields.Many2many("res.partner", "memo_log_cc_partner", "memo_id", "partner_id", string="CC")
 
 
