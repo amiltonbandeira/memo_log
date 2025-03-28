@@ -1,5 +1,4 @@
 from odoo import models, api, fields
-from odoo.exceptions import ValidationError
 
 class MailMessage(models.TransientModel):
     _inherit = 'mail.compose.message'
@@ -10,6 +9,7 @@ class MailMessage(models.TransientModel):
     def create(self, vals):
 
         if not vals('memo_id'):
+
             memo = self.env['memo.log'].create({
                 'name': 'Memo for message ',
                 'recipient_type': 'Email',
