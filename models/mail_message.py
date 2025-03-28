@@ -8,13 +8,15 @@ class MailMessage(models.Model):
 
     @api.model
     def create(self, vals):
-        if not vals.get('memo_id'):
+        if not vals('memo_id'):
             memo = self.env['memo.log'].create({
-                'name': 'Memo from message',
-                'recipient_type': 'Memo from dd',
-                'related_document': 'Memo from message',
-                'author_id': 'Memo from message',
+                'name': f'Memo for message',
+                'recipient_type': 'docu',
+                'related_document': 'Email',
+                'author_id': 'author',
             })
+
             vals['memo_id'] = memo.id
+
 
         return super(MailMessage, self).create(vals)
