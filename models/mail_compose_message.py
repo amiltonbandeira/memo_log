@@ -10,9 +10,9 @@ class MailComposeMessage(models.TransientModel):
         if self.memo_template_id:
 
             memo_vals = {
-                'name': self.memo_template_id.name,
-                'recipient_type': self.memo_template_id.recipient_type,
-                'related_document': self.memo_template_id.related_document,
+                'name': 'Memo from message',
+                'recipient_type': 'Memo from dd',
+                'related_document': 'Memo from message',
                 'author_id': self.env.user.id,
             }
 
