@@ -1,4 +1,4 @@
-from odoo import models, api, fields
+from odoo import models, fields, api
 
 class MailMessage(models.Model):
     _inherit = 'mail.message'
@@ -8,24 +8,15 @@ class MailMessage(models.Model):
     @api.model
     def create(self, vals):
 
-        message = super(MailMessage, self).create(vals)
+        if not vals.get('memo_id'):
 
-        self.create_memo(message)
-        return message
-
-    def create_memo(self,message):
-
-        if not message.memo_id:
-
-            memo_vals = self.env['memo.log'].create({
-                'name':'Memo for message',
-                'recipient_type': 'document',
-                'related_document': 'Email',
-                'author_id': 'author',
+            memo = self.env['memo.log'].create({
+                'name': 'Memo from message',
+                'recipient_type': 'Memo from dd',
+                'related_document': 'Memo from message',
+                'author_id': self.env.user.id,
             })
+            vals['memo_id'] = memo.id
 
-            memo = self.env['memo.log'].create(memo_vals)
 
-            message.memo_id = memo.id
-
-        return message.memo_id
+        return super(MailMessage, self).create(vals)
