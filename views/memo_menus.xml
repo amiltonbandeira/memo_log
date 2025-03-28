@@ -1,0 +1,5 @@
+<odoo>
+ <menuitem id="menu_memo_log" name="Memo">
+    <menuitem id="menu_memo_logo_child" action="action_memo_log_view"/>
+ </menuitem>
+</odoo>

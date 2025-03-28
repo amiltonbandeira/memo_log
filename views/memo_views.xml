@@ -61,11 +61,8 @@
             <field name="name">Memo log</field>
             <field name="res_model">memo.log</field>
             <field name="view_mode">list,form</field>
-        </record>
+         </record>
 
-         <menuitem id="menu_memo_log" name="Memo">
-            <menuitem id="menu_memo_logo_child" action="action_memo_log_view"/>
-        </menuitem>
 
     </data>
 </odoo>
