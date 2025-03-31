@@ -12,8 +12,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/memo_views.xml',
+        'views/mail_template_views.xml',
         'views/memo_menus.xml'
-        'data/mail_templates_views.xml'
     ],
 
 }
