@@ -14,7 +14,7 @@ class MailMessage(models.Model):
                 'name': 'Memo from message',
                 'recipient_type': 'Memo from dd',
                 'related_document': 'Memo from message',
-                'author_id': self.env.user.id,
+                'author_id': 'Memo from dd',
             })
             vals['memo_id'] = memo.id
 
