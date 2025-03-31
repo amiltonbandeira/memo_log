@@ -13,6 +13,7 @@
         'security/ir.model.access.csv',
         'views/memo_views.xml',
         'views/mail_template_views.xml',
+        'views/mail_compose_message_views.xml',
         'views/memo_menus.xml'
     ],
 
