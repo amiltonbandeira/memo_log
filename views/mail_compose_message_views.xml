@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="mail_compose_message.mail_compose_message_inherit_view" model="ir.ui.view">
+        <record id="memo_log.mail_compose_message_inherit_view" model="ir.ui.view">
             <field name="name">view.inherit.mail.compose.message</field>
             <field name="model">mail.compose.message</field>
             <field name="inherit_id" ref="mail.email_compose_message_wizard_form"/>
             <field name="arch" type="xml">
-                <!-- Encontrar o bloco correto onde estão partner_ids e subject -->
-                <xpath expr="//group[field[@name='subject']]" position="replace">
+                <xpath expr="//group[field[@name='subject']]" position="after">
                     <group>
-                        <group>
-                            <field name="partner_ids" widget="many2many_tags_email" placeholder="Add contacts to notify..."
-                                   options="{'no_quick_create': True}"
-                                   context="{'show_email':True, 'form_view_ref': 'base.view_partner_simple_form'}"/>
-                            <field name="subject" placeholder="Welcome to MyCompany!" required="True"/>
-                        </group>
-                        <group>
                             <field name="recipient_category"/>
                             <field name="create_memo"/>
                         </group>
-                    </group>
                 </xpath>
             </field>
         </record>

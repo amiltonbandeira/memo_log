@@ -9,3 +9,4 @@ class MailComposeMessage(models.TransientModel):
         ('client', 'Client')
     ], required=True, string='Recipient Category', readonly=True)
     create_memo = fields.Boolean(string='Create Memo')
+
