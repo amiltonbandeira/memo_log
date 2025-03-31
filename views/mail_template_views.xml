@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="mail_template_inherit_view" model="ir.ui.view">
+        <field name="name">view.inherit.mail_template</field>
+        <field name="model">mail.template</field>
+        <field name="inherit_id" ref="mail.email_template_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='description']" position="after">
+                   <!-- Adding the new fields recipient_category and create_memo after description-->
+                    <field name="recipient_category"/>
+                    <field name="create_memo"/>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>
