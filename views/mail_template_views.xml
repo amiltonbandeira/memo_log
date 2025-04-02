@@ -6,7 +6,6 @@
         <field name="inherit_id" ref="mail.email_template_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='description']" position="after">
-                   <!-- Adding the new fields recipient_category and create_memo after description-->
                     <field name="recipient_category"/>
                     <field name="create_memo"/>
 

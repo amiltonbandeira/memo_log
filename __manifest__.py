@@ -14,7 +14,6 @@
         'views/memo_views.xml',
         'views/mail_template_views.xml',
         'views/mail_compose_message_views.xml',
-        'data/mail_template_chatter.xml',
         'views/memo_menus.xml'
     ],
 
