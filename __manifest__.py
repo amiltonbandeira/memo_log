@@ -14,7 +14,10 @@
         'views/memo_views.xml',
         'views/mail_template_views.xml',
         'views/mail_compose_message_views.xml',
-        'views/memo_menus.xml'
+        'views/memo_menus.xml',
+       # 'report/action_memo_report.xml',
+       # 'report/memo_log_report_templates.xml',
+        'data/mail_template.xml'
     ],
 
 }

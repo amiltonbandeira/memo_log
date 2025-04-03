@@ -1,6 +1,8 @@
 <odoo>
     <data>
-    <menuitem id="menu_memo_logo_child" action="action_memo_log_view"/>
-    <!--<menuitem id="menu_memo_logo_second_child" action="action_memo_log_view"/>-->
+        <menuitem id="menu_memo_logo_child" action="action_memo_log_view"/>
+        <!--<menuitem id="menu_memo_logo_second_child" action="action_memo_log_view"/>-->
+
+
     </data>
 </odoo>

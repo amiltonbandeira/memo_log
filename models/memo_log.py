@@ -1,13 +1,8 @@
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
-
-import logging
-
 from odoo import models , fields , api
 
 class memo_log(models.Model):
-    _name = 'memo.log'
-    _description = 'Memo log model'
+    _name = "memo.log"
+    _description = "Memo Log"
 
     name = fields.Char(string="Title", required=True)
     recipient_type = fields.Char(string = "Recipient Type")
@@ -45,3 +40,10 @@ class memo_log(models.Model):
 
         res['body_html'] = rendered_html
         return res
+
+
+    def action_send_email(self):
+        template = self.env.ref('memo_log.email_template_memo_log')
+
+        if template:
+            template.send_mail(self.name, force_send=True)

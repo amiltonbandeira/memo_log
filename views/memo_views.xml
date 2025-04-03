@@ -1,52 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <template id="message_user_assigned">
-            <div style="margin: auto;display: block;text-align: center;">
-                <h1>Dear , patient <t t-esc="object.patient_id.name"/>,</h1>
-                <p> from <t t-esc="object.author_id.name"/> created By
-                    <t t-esc="object.create_uid.name"/> </p>
-                <p>The title is  <t t-esc="object.name"/> and the recipient Type id <t t-esc="object.recipient_type"/> with the related document
-                    <t t-esc="object.related_document"/> with attachments? <t t-esc="object.attachment and 'Yes' or 'No'"/>
-             our  the project  id is <t t-esc="object.project_id.name"/> was and the created Date is <t t-esc="object.create_date"/>
-                </p>
-            </div>
-        </template>
+            <template id="message_user_assigned">
+                    <center>
+                            <p>Hello <t t-esc="object.author_id.name"/>!</p>
+                            <p>Your memo <t t-esc="object.name"/> has been created successfully.</p>
+                    </center>
+            </template>
         <record id="memo_log_form_view" model="ir.ui.view">
             <field name="name">Memo log form</field>
             <field name="model">memo.log</field>
             <field name="arch" type="xml">
                 <form string="Memo Form">
-                    <sheet>
-                        <h1>
-                            <field name="name"/>
-                        </h1>
-                        <group colspan="2">
-                            <group>
-                                <field name="create_uid" string="Created By"/>
-                                <field name="create_date" string="Created Date"/>
-                                <field name="recipient_type" />
-                            </group>
-                            <group>
-                                <field name="related_document" style="font-weight:bold"/>
-                                <field name="patient_id" placeholder="Patient ID..." />
-                                <field name="project_id" placeholder="Project ID..." />
-                            </group>
-                        </group>
-                        <group>
-                            <field name="author_id" string="From: " domain="[('id', '=', create_uid)]" readonly="1"/>
-                            <field name="partner_ids" string="To (Partners): " widget="many2many_tags"/>
-                            <field name="cc_partner_ids" string="CC: " widget="many2many_tags"/>
-                        </group>
-                        <notebook>
-                            <page string="Body" name="memo_body">
-                                <field name="body_html" widget="html_mail" class="oe-bordered-editor"
-                                       options="{'codeview': true, 'dynamic_placeholder': true}"/>
-                            </page>
-                            <page string="Attachments" name="memo_attachments">
-                            </page>
-                        </notebook>
-                    </sheet>
+                    <div class="container-fluid m-0 p-0">
+                        <div class="row">
+                            <div class="col">
+                                <sheet>
+                                    <h1>
+                                        <field name="name"/>
+                                    </h1>
+                                    <group colspan="2">
+                                        <group>
+                                            <field name="create_uid" string="Created By"/>
+                                            <field name="create_date" string="Created Date"/>
+                                            <field name="recipient_type" />
+                                        </group>
+                                        <group>
+                                            <field name="related_document" style="font-weight:bold"/>
+                                            <field name="patient_id" placeholder="Patient ID..." />
+                                            <field name="project_id" placeholder="Project ID..." />
+                                        </group>
+                                    </group>
+                                    <group>
+                                        <field name="author_id" string="From: " domain="[('id', '=', create_uid)]" readonly="1"/>
+                                        <field name="partner_ids" string="To (Partners): " widget="many2many_tags"/>
+                                        <field name="cc_partner_ids" string="CC: " widget="many2many_tags"/>
+                                        <button name="action_send_email"
+                                                type="object"
+                                                class="btn btn-primary"
+                                                string="Send Email"/>
+                                    </group>
+                                    <notebook>
+                                        <page string="Body" name="memo_body">
+                                            <field name="body_html" widget="html_mail" class="oe-bordered-editor"
+                                                   options="{'codeview': true, 'dynamic_placeholder': true}"/>
+                                        </page>
+                                        <page string="Attachments" name="memo_attachments">
+                                        </page>
+                                    </notebook>
+                                </sheet>
+                            </div>
+                            <div class="col-3">
+                                    <field name="message_attachment_ids" widget="many2many_preview"/>
+                            </div>
+                            <field name="name"></field>
+                        </div>
+                    </div>
                 </form>
             </field>
         </record>
@@ -70,3 +79,5 @@
         </record>
     </data>
 </odoo>
+
+

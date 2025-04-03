@@ -1,0 +1,19 @@
+<odoo>
+    <template id="memo_report_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Receipt</h2>
+                    <p>This object's name is  <t t-esc="doc.name"/></p>
+                    <p>The recipient type is <t t-esc="doc.recipient_type"/></p>
+                    <p>Has related document is <t t-esc="doc.related_document"/></p>
+                    <p>The attachment is <t t-esc="doc.attachment"/></p>
+                    <p>The patient id is <t t-esc="doc.patient_id"/></p>
+                    <p>The project id is <t t-esc="doc.project_id"/></p>
+                    <p>The messages are <t t-esc="doc.message_ids"/></p>
+                    <p>The message attachments are <t t-esc="doc.message_attachment_ids"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

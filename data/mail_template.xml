@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_memo_log" model="mail.template">
+            <field name="name">Memo Email</field>
+            <field name="model_id" ref="memo_log.model_memo_log"/>
+            <field name="subject">Memo: {{object.name}}</field>
+            <field name="email_from">{{object.create_uid.email or ''}}</field>
+            <field name="email_to">{{object.partner_ids and object.partner_ids[0].email or ''}}</field>
+            <field name="partner_to">{{ object.address_id.id }}</field>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html" type="html">
+                    <div style="margin: 0px; padding: 0px; background-color:white; color:black">
+                        <p>Hello , Dear , this is a memo mail created by <t t-esc="object.create_uid.name"/> recipient is <t t-esc="object.recipient_type"/>
+                        </p>
+                    </div>
+            </field>
+        </record>
+    </data>
+</odoo>
