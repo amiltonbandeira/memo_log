@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_memo_report" model="ir.actions.report">
+    <field name="name">Memo Report</field>
+    <field name="model">memo.log</field>
+    <field name="report_name">memo_log.report_memo</field>
+    <field name="report_type">qweb-pdf</field>
+    </record>
+</odoo>
